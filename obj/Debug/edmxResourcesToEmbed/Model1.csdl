@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskassignmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Intern">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="TaskassignmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Interns" EntityType="Self.Intern" />
+    <FunctionImport Name="GetRecordById" ReturnType="Collection(TaskassignmentModel.GetRecordById_Result)">
+      <Parameter Name="empiId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertInternData">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="MobileNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetRecordById_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="MobileNo" Nullable="true" />
+  </ComplexType>
+</Schema>
